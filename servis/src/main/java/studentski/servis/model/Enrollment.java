@@ -4,28 +4,24 @@ import java.sql.Date;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "enrollment")
 public class Enrollment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "enrollment_id")
+
 	private Long id;
 	
-	//@Column(name = "start_date")
 	private Date startDate;
 	
-	//@Column(name = "end_date")
 	private Date endDate;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)

@@ -4,27 +4,22 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "teacher")
 public class Teacher {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
 	private Long id;
 	
-	//@Column(name = "firstname")
 	private String firstName;
 	
-	//@Column(name = "lastname")
 	private String lastName;
 	
 	@ManyToMany(mappedBy = "teachers")

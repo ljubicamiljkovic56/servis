@@ -3,31 +3,24 @@ package studentski.servis.model;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "exam")
 public class Exam {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "exam_id")
 	private Long id;
 	
-	//@Column(name = "exam_points")
     private Integer examPoints;
     
-	//@Column(name = "lab_points")
     private Integer labPoints;
     
-	//@Column(name = "exam_date")
     private Date date;
     
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)

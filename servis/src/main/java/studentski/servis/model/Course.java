@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.Set;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,18 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "course")
 public class Course {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
+
 	private Long id;
 	
-	//@Column(name = "course_name")
 	String name;
 	
 	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)

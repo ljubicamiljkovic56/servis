@@ -6,31 +6,24 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "examperiod")
 public class ExamPeriod {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "examperiod_id")
 	private Long id;
 	
-	//@Column(name = "examperiod_name")
 	private String name;
 	
-	//@Column(name = "start_date")
 	private Date startDate;
 	
-	//@Column(name = "end_date")
 	private Date endDate;
 	
 	@OneToMany(mappedBy = "examPeriod", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)

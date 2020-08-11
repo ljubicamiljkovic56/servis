@@ -12,24 +12,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-//@Table(name = "student")
 public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "student_id")
 	private Long id;
 
 	@Column(name = "cardNumber", unique = true, nullable = false)
 	String cardNumber;
 
-	//@Column(name = "firstname")
 	private String firstName;
 
-	//@Column(name = "lastname")
 	private String lastName;
 
 	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
