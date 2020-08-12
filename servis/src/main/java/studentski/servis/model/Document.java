@@ -1,5 +1,6 @@
 package studentski.servis.model;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,8 +16,14 @@ public class Document {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private DocumentType documentType;
+//	@ManyToMany
+//	@JoinTable(name = "document_types",
+//            joinColumns = @JoinColumn(name="document_id", referencedColumnName="id"),
+//            inverseJoinColumns = @JoinColumn(name="doc_type_id", referencedColumnName="id"))
+//	private Set<DocumentType> document_types = new HashSet<DocumentType>();
 
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	private DocumentType document_types;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	private Student student;
@@ -25,8 +32,13 @@ public class Document {
 	public Document(Long id, DocumentType documentType, Student student) {
 		super();
 		this.id = id;
-		this.documentType = documentType;
+		this.document_types = documentType;
 		this.student = student;
+	}
+
+
+	public Document() {
+		super();
 	}
 
 
@@ -41,12 +53,12 @@ public class Document {
 
 
 	public DocumentType getDocumentType() {
-		return documentType;
+		return document_types;
 	}
 
 
 	public void setDocumentType(DocumentType documentType) {
-		this.documentType = documentType;
+		this.document_types = documentType;
 	}
 
 

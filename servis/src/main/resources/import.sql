@@ -1,4 +1,8 @@
+-- koristi db tseo
+use tseo;
+
 set foreign_key_checks = 0;
+
 
 -- delete all rows
 truncate table user_authority;
@@ -11,6 +15,11 @@ truncate table student;
 truncate table course;
 truncate table teacher;
 truncate table exam_period;
+
+truncate table title;
+truncate table teacher_title;
+truncate table document;
+truncate table document_type;
 
 set foreign_key_checks = 1;
 
@@ -35,6 +44,16 @@ insert into student (card_number, first_name, last_name) values ('ra7-2014', 'Mi
 insert into student (card_number, first_name, last_name) values ('ra8-2014', 'Petar', 'Petrović');
 insert into student (card_number, first_name, last_name) values ('ra9-2014', 'Igor', 'Jovin');
 
+-- tbl za dokumente i tipove dokumenata
+insert into document_type (name) values ('UPISNICA');
+insert into document_type (name) values ('ISPISNICA');
+insert into document_type (name) values ('DIPLOMA');
+insert into document_type (name) values ('UVERENJE');
+
+insert into document (document_types_id, student_id) values (1, 1);
+insert into document (document_types_id, student_id) values (1, 4);
+insert into document (document_types_id, student_id) values (2, 1);
+
 insert into course (name) values ('Matematika');
 insert into course (name) values ('Osnove programiranja');
 insert into course (name) values ('Objektno programiranje');
@@ -49,9 +68,19 @@ insert into enrollment (start_date, end_date, student_id, course_id) values ('20
 insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 5, 1);
 insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 6, 2);
 
-insert into teacher (first_name, last_name, rank) values ('Milan', 'Jovanovic', 'docent');
-insert into teacher (first_name, last_name, rank) values ('Sanja', 'Stanic', 'vanredni profesor');
-insert into teacher (first_name, last_name, rank) values ('Nemanja', 'Jankovic', 'redovni profesor');
+-- obrisala sam rank
+insert into teacher (first_name, last_name) values ('Milan', 'Jovanovic');
+insert into teacher (first_name, last_name) values ('Sanja', 'Stanic');
+insert into teacher (first_name, last_name) values ('Nemanja', 'Jankovic');
+
+-- ove dve tabele sam dodala
+insert into title (name) values ('DOCENT');
+insert into title (name) values ('ASISTENT');
+insert into title (name) values ('DEMONSTRATOR');
+
+insert into teacher_title (teacher_id, title_id) values (1, 1);
+insert into teacher_title (teacher_id, title_id) values (2, 2);
+insert into teacher_title (teacher_id, title_id) values (3, 3);
 
 insert into teaching (course_id, teacher_id) values (1, 1);
 insert into teaching (course_id, teacher_id) values (1, 2);

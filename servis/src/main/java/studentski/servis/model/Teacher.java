@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -21,6 +23,12 @@ public class Teacher {
 	private String firstName;
 	
 	private String lastName;
+	
+	@ManyToMany
+	@JoinTable(name = "teacher_title",
+            joinColumns = @JoinColumn(name="teacher_id", referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name="title_id", referencedColumnName="id"))
+	private Set<Title> titles = new HashSet<Title>();
 	
 	@ManyToMany(mappedBy = "teachers")
 	private Set<Course> courses = new HashSet<Course>();
