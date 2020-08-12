@@ -19,7 +19,7 @@ public class Payment {
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	private Student student;
-	
+
 	private String reason_for_payment;
 	
 	private String receiver;
@@ -28,7 +28,7 @@ public class Payment {
 	
 	private String recieversAccount;
 	
-	private int modela;
+	private int model;
 	
 	private String pozivNaBroj;
 	
@@ -83,12 +83,12 @@ public class Payment {
 		this.recieversAccount = recieversAccount;
 	}
 
-	public int getModela() {
-		return modela;
+	public int getModel() {
+		return model;
 	}
 
-	public void setModela(int modela) {
-		this.modela = modela;
+	public void setModel(int modela) {
+		this.model = modela;
 	}
 
 	public String getPozivNaBroj() {
@@ -116,7 +116,7 @@ public class Payment {
 		this.receiver = receiver;
 		this.amount = amount;
 		this.recieversAccount = recieversAccount;
-		this.modela = modela;
+		this.model = modela;
 		this.pozivNaBroj = pozivNaBroj;
 		this.paymentDate = paymentDate;
 	}
