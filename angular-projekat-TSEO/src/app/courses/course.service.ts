@@ -6,13 +6,14 @@ import { Course } from '../model/course.model';
 import { Enrollment } from '../model/enrollment.model';
 
 import 'rxjs/add/operator/toPromise';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CourseService {
     private coursesUrl = 'api/courses';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     private RegenerateData = new Subject<void>();
 
@@ -22,15 +23,15 @@ export class CourseService {
         this.RegenerateData.next();
     }
 
-    getCourses(): Promise<Course[]> {
-        return this.http.get(this.coursesUrl)
-            .toPromise()
+    getCourses() {
+        return this.http.get(this.coursesUrl);
+/*             .toPromise()
             .then(response =>
                 response.json() as Course[])
-            .catch(this.handleError);
+            .catch(this.handleError); */
     }
 
-    getCourse(id: number): Promise<Course> {
+   /*  getCourse(id: number): Promise<Course> {
         const url = `${this.coursesUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
@@ -75,5 +76,5 @@ export class CourseService {
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
         return Promise.reject(error.message || error);
-    }
+    } */
 }

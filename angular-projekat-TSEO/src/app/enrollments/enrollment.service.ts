@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
 
 import { Enrollment } from '../model/enrollment.model';
 
@@ -11,7 +12,7 @@ export class EnrollmentService {
     private enrollmentsUrl = 'api/enrollment';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     private RegenerateData = new Subject<void>();
 
@@ -22,12 +23,12 @@ export class EnrollmentService {
     }
 
     
-    addEnrollment(enrollment: Enrollment): Promise<Enrollment> {
-        return this.http
-            .post(this.enrollmentsUrl, JSON.stringify(enrollment), { headers: this.headers })
+    addEnrollment(enrollment: Enrollment) {
+        return this.http;
+/*             .post(this.enrollmentsUrl, JSON.stringify(enrollment), { headers: this.headers })
             .toPromise()
             .then(res => res.json() as Enrollment)
-            .catch(this.handleError);
+            .catch(this.handleError); */
     }
 
     deleteEnrollment(enrollmentId: number): Promise<{}> {

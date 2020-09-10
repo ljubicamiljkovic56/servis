@@ -16,17 +16,17 @@ export class StudentsComponent implements OnInit {
 
   subscription: Subscription;
 
-  constructor(private studentService: StudentService, private router: Router) {
+ /*  constructor(private studentService: StudentService, private router: Router) {
     this.subscription = studentService.RegenerateData$.subscribe(() =>
       this.getStudents()
     );
-  }
+  } */
 
   ngOnInit(): void {
   //  this.getStudents();
   }
 
-  getStudents() {
+  /* getStudents() {
     this.studentService.getStudents().then(students =>
       this.students = students);
   }
@@ -43,5 +43,5 @@ export class StudentsComponent implements OnInit {
     this.studentService.deleteStudent(studentId).then(
       () => this.getStudents()
     );
-  }
+  } */
 }

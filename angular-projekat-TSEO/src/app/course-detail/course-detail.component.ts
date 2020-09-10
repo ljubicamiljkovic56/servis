@@ -24,15 +24,15 @@ export class CourseDetailComponent implements OnInit {
 
   mode: string = 'ADD';
 
-  constructor(private courseService: CourseService, private enrollmentService: EnrollmentService,
+  /* constructor(private courseService: CourseService, private enrollmentService: EnrollmentService,
     private route: ActivatedRoute, private location: Location, private router: Router) {
     enrollmentService.RegenerateData$.subscribe(() =>
       this.getEnrollments()
     );
-  }
+  } */
 
   ngOnInit() {
-    if (this.route.snapshot.params['id']) {
+/*     if (this.route.snapshot.params['id']) {
       this.mode = 'EDIT';
       // fetch course if we edit the existing course
       this.route.params
@@ -42,10 +42,10 @@ export class CourseDetailComponent implements OnInit {
           this.course = course;
           this.getEnrollments();
         });
-    }
+    } */
   }
 
-  private getEnrollments(): void {
+ /*  private getEnrollments(): void {
     this.courseService.getCourseEnrollments(this.course.id).then(enrollments =>
       this.enrollments = enrollments);
   }
@@ -83,6 +83,6 @@ export class CourseDetailComponent implements OnInit {
     this.enrollmentService.deleteEnrollment(enrollmentId).then(
       () => this.getEnrollments()
     );
-  }
+  } */
 
 }

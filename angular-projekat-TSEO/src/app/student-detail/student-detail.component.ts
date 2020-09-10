@@ -31,7 +31,7 @@ export class StudentDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.route.snapshot.params['id']) {
+/*     if (this.route.snapshot.params['id']) {
       this.mode = 'EDIT'; 
       // fetch student if we edit the existing student
       this.route.params
@@ -43,14 +43,14 @@ export class StudentDetailComponent implements OnInit {
             this.enrollments = enrollments);
           }
         );
-    } 
+    } */ 
   }
 
   save(): void {
-    this.mode == 'ADD' ? this.add() : this.edit();    
+  //  this.mode == 'ADD' ? this.add() : this.edit();    
   }
 
-  private add(): void {
+  /* private add(): void {
     this.studentService.addStudent(this.student)
       .then(student => {
         this.studentService.announceChange();
@@ -69,5 +69,5 @@ export class StudentDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
+ */
 }

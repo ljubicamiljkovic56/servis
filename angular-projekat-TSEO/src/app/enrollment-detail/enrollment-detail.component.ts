@@ -44,14 +44,14 @@ export class EnrollmentDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params =>
+/*     this.route.queryParams.subscribe(params =>
       this.courseService.getCourse(params['courseId'])
         .then(course => 
           this.enrollment.course = course 
         ));
 
     this.studentService.getStudents().then(students =>
-      this.students = students);
+      this.students = students); */
   }
 
   public add(): void {
@@ -59,15 +59,15 @@ export class EnrollmentDetailComponent implements OnInit {
     this.enrollment.startDate = new Date(this.ngbStartDate.year, this.ngbStartDate.month-1, this.ngbStartDate.day);
     this.enrollment.endDate = new Date(this.ngbEndDate.year, this.ngbEndDate.month-1, this.ngbEndDate.day);
 
-    this.enrollmentService.addEnrollment(this.enrollment)
+/*     this.enrollmentService.addEnrollment(this.enrollment)
       .then(enrollment => {
         this.enrollmentService.announceChange();
         this.goBack();
-      });
+      }); */
   }
 
-  goBack(): void {
+/*   goBack(): void {
     this.location.back();
   }
-
+ */
 }

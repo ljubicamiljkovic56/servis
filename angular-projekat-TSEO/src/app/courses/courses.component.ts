@@ -17,19 +17,19 @@ export class CoursesComponent implements OnInit {
   subscription: Subscription;
 
   constructor(private courseService: CourseService, private router: Router) {
-    this.subscription = courseService.RegenerateData$.subscribe(() =>
+    /* this.subscription = courseService.RegenerateData$.subscribe(() =>
       this.getCourses()
-    );
+    ); */
   }
 
   ngOnInit(): void {
-    this.getCourses();
+   // this.getCourses();
   }
 
-  getCourses() {
+  /* getCourses() {
     this.courseService.getCourses().then(courses =>
       this.courses = courses);
-  }
+  } */
 
   gotoAdd(): void {
     this.router.navigate(['/addCourse']);
@@ -39,9 +39,9 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['/editCourse', course.id]);
   }
 
-  deleteCourse(courseId: number): void {
+ /*  deleteCourse(courseId: number): void {
     this.courseService.deleteCourse(courseId).then(
       () => this.getCourses()
     );
-  }
+  } */
 }
