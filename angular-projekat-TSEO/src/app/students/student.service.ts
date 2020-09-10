@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
 
 import { Student } from '../model/student.model';
 import { Enrollment } from '../model/enrollment.model';
@@ -12,7 +13,35 @@ export class StudentService {
     private studentsUrl = 'api/students';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
+
+    // getAll() {
+    //     return this.http.get(this.studentsUrl);
+    //   }
+    
+    //   get(id) {
+    //     return this.http.get(`${this.studentsUrl}/${id}`);
+    //   }
+    
+    //   create(data) {
+    //     return this.http.post(this.studentsUrl, data);
+    //   }
+    
+    //   update(id, data) {
+    //     return this.http.put(`${this.studentsUrl}/${id}`, data);
+    //   }
+    
+    //   delete(id) {
+    //     return this.http.delete(`${this.studentsUrl}/${id}`);
+    //   }
+    
+    //   deleteAll() {
+    //     return this.http.delete(this.studentsUrl);
+    //   }
+    
+    //   findByTitle(title) {
+    //     return this.http.get(`${this.studentsUrl}?title=${title}`);
+    //   }
 
     private RegenerateData = new Subject<void>();
 
@@ -22,15 +51,15 @@ export class StudentService {
         this.RegenerateData.next();
     }
 
-    getStudents(): Promise<Student[]> {
-        return this.http.get(this.studentsUrl)
-            .toPromise()
-            .then(response =>
-                response.json() as Student[])
-            .catch(this.handleError);
+    getStudents(){
+        return this.http.get(this.studentsUrl);
+            // .toPromise()
+            // .then(response =>
+            //     response.json() as Student[])
+       //     .catch(this.handleError);
     }
 
-    getStudent(id: number): Promise<Student> {
+    /* getStudent(id: number): Promise<Student> {
         const url = `${this.studentsUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
@@ -75,5 +104,5 @@ export class StudentService {
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
         return Promise.reject(error.message || error);
-    }
+    } */
 }
